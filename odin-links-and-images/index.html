@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+</head>
+<!-- index should be at the root directory and other html files should be in their own directory -->
+<body>
+    <h1>Homepage</h1>
+    <!-- Embedded link -opens in the same tab as the webpage by default -->
+    <p><a href="https://www.theodinproject.com/about">About the Odin Project (self)</a></p>
+
+    <!-- if 'target' not specified, the default is '_self' -including 'target="_blank"' allows the link to be opened in a different tab -->
+    <p><a href="https://www.theodinproject.com/about" target="_blank" rel="noopener noreferrer">About the Odin Project (target)</a></p>
+    <!-- the 'noopener' attr ensures the link opened in a new tab or window cannot inteact with or access the original page --> 
+    <!-- security risk: JS from new page can manipulate the original page -->
+    <!-- the 'noreferrer' attr provides privacy and security -it prevents new page from knowing where user came from (also includes 'noopener' functionality) -->
+    <!-- 'noopener' can prevent phishing attacks by preventing the changing of the original page to a different (similar) page => aka 'tabnabbing' -->
+    <!-- BEST PRACTICE: if 'target="_blank"' is used, include 'rel="noopener noreferrer"' -->
+
+    <!-- this is a relative link; an absolute path would contain the scheme and domain -->
+    <p><a href="./pages/about.html">About</a></p> 
+    <!-- './' will specify that is the code should look for the file within the current (root) directory -->
+     <img src="https://www.theodinproject.com/mstile-310x310.png" alt="the odin project" height="210" width="210">
+</body>
+</html>
