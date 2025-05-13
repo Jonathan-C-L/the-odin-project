@@ -1,0 +1,24 @@
+/* general styling */
+body{
+    text-align: center;
+}
+
+
+
+/* images */
+img{
+    height: 26vh;
+    border: 1px solid black;
+    border-radius: 12px;
+    box-sizing: border-box;
+    padding: 12px;
+}
+
+
+
+/* user choices */
+
+
+
+
+/* results */
