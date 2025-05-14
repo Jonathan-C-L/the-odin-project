@@ -41,7 +41,7 @@ button:active{
     width: 30%;
 }
 .matchup{
-    /* display: none; */
+    display: none;
 }
 .images{
     display: flex;
