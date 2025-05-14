@@ -1,19 +1,29 @@
 /**************global items*****************/
 console.log("Hello world!");
 preloadImages = [];
+let userScore = 0, computerScore = 0;
+
+/*********Rock, Paper, Scissors Enum********/
+const RPS = {
+    0: "rock",
+    1: "paper",
+    2: "scissors"
+};
 
 /****************event handler**************/
 window.onload = () => { 
-    // variables
-    const choice = document.querySelectorAll("button");
-    const user = document.querySelector(".user-selection");
-
-    
     // preloading images
     imgInit();
 
     // get user choice
-    getUserChoice();
+    const userChoice = getUserChoice();
+    const computerChoice = getComputerChoice();
+    console.log(`Computer choice was ${RPS[computerChoice]}`);
+
+    // only displays the matchup if user has made a choice
+    if(userChoice > -1){
+        playRound(computerChoice, userChoice);
+    }
 
 }
 /******************functions***************/
@@ -52,34 +62,27 @@ function Randomize(min, max){
     return Math.floor(Math.random()*(max-min))+min;
 }
 
-function getUserChoice(){
+function getUserChoice(CallBack){
     const user = document.querySelector(".user-selection");
     const choice = document.querySelectorAll("button");
 
+    // show user selection options
     user.style.display = "flex";
 
     // choice made
     for(let i = 0; i < choice.length; i++){
         choice[i].onclick = () =>{
             user.style.display = "none";
-            if(i == 0){
-                console.log("user chose rock");
-                return 0;
-            }
-            else if (i == 1){
-                console.log("user chose paper");
-                return 1;
-            }
-            else{
-                console.log("user chose scissors")
-                return 2;
-            }
+            console.log(`User choice was ${RPS[i]}`);
+            return i;
         }
     }
 }
 
-function playRound(){
+function playRound(computer, user){
     const matchup = document.querySelector(".matchup");
+
+    console.log(`computer: ${computer} - user: ${user}`);
     matchup.style.display = "flex";
 
 }
