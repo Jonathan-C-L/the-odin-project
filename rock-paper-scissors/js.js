@@ -16,14 +16,9 @@ window.onload = () => {
     imgInit();
 
     // get user choice
-    const userChoice = getUserChoice();
     const computerChoice = getComputerChoice();
     console.log(`Computer choice was ${RPS[computerChoice]}`);
-
-    // only displays the matchup if user has made a choice
-    if(userChoice > -1){
-        playRound(computerChoice, userChoice);
-    }
+    getUserChoice(computerChoice);
 
 }
 /******************functions***************/
@@ -62,27 +57,28 @@ function Randomize(min, max){
     return Math.floor(Math.random()*(max-min))+min;
 }
 
-function getUserChoice(CallBack){
+function getUserChoice(computerChoice){
     const user = document.querySelector(".user-selection");
     const choice = document.querySelectorAll("button");
-
-    // show user selection options
-    user.style.display = "flex";
 
     // choice made
     for(let i = 0; i < choice.length; i++){
         choice[i].onclick = () =>{
-            user.style.display = "none";
             console.log(`User choice was ${RPS[i]}`);
-            return i;
+            // only displays the matchup if user has made a choice
+            playRound(computerChoice, i);
         }
     }
 }
 
 function playRound(computer, user){
     const matchup = document.querySelector(".matchup");
+    const choice = document.querySelector(".user-img");
+    const comp = document.querySelector(".bot-img"); 
 
-    console.log(`computer: ${computer} - user: ${user}`);
-    matchup.style.display = "flex";
-
+    // displaying the images for the user and computer choices, respectively
+    choice.src = `./images/${RPS[user]}.png`;
+    choice.alt = `${RPS[user]}`;
+    comp.src = `./images/${RPS[computer]}.png`;
+    comp.alt = `${RPS[computer]}`
 }
