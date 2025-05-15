@@ -74,16 +74,60 @@ function getUserChoice(){
 }
 
 function playRound(computer, user){
-    const matchup = document.querySelector(".matchup");
+    const score = document.querySelector(".score");
     const choice = document.querySelector(".user-img");
     const comp = document.querySelector(".bot-img"); 
+    let winner = "", tie = false;
 
     // displaying the images for the user and computer choices, respectively
     choice.src = `./images/${RPS[user]}.png`;
     choice.alt = `${RPS[user]}`;
     comp.src = `./images/${RPS[computer]}.png`;
     comp.alt = `${RPS[computer]}`
-
-    // user vs computer comparison
     
+    // user vs computer comparison
+    // tie
+    if(RPS[user] == RPS[computer]){
+        window.alert(`Tie! Both played ${RPS[user]}`);
+        tie = true;
+    }
+    // user choice is rock
+    if(RPS[user] == "rock" && !tie){
+        winner = (RPS[computer] == "paper")?"computer":"user";
+    }
+    // user choice is paper
+    if(RPS[user] == "paper" && !tie){
+        winner = (RPS[computer] == "scissors")?"computer":"user";
+    }
+    // user choice is scissors
+    if(RPS[user] == "scissors" && !tie){
+        winner = (RPS[computer] == "rock")?"computer":"user";
+    }
+    // only change score if winner has been determined
+    if(winner != ""){
+        if(winner == "computer"){
+            window.alert(`You lose! Computer won playing ${RPS[computer]}`);
+            computerScore++;
+            score.textContent = `${userScore} - ${computerScore}`;
+        }
+        else{
+            window.alert(`You won playing ${RPS[user]}!`);
+            userScore++;
+            score.textContent = `${userScore} - ${computerScore}`;
+        }
+        // reset the result so score doesn't get re-added
+        winner = "";
+        tie = false;
+    }
+
+    // display winner when one reaches 5 wins total
+    if(userScore >= 5 || computerScore >= 5){
+        (userScore >= 5)? endMatch("You"):endMatch("Computer");
+    }
+}
+
+// helper function to declare winner
+function endMatch(winner){
+    window.alert(`${winner} won! \rThe match will restart now`);
+    location.reload();
 }
