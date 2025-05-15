@@ -79,4 +79,19 @@ h3{
 /* results */
 .result{
     display: none;
+    justify-content: center;
+}
+.result-message{
+    font-size: 1000%;
+    font-weight: bold;
+    padding: .2em;
+    margin: .5em;
+}
+.reset{
+    font-size: x-large;
+    font-weight: bold;
+    justify-self: center;
+    padding: 1em 5em;
+    margin: 1em;
+    margin-bottom: 4em;
 }

@@ -17,6 +17,10 @@ window.onload = () => {
 
     getUserChoice();
 
+    document.querySelector(".reset").onclick = () =>{
+        location.reload();
+    }
+
 }
 /******************functions***************/
 // preloading images
@@ -128,6 +132,17 @@ function playRound(computer, user){
 
 // helper function to declare winner
 function endMatch(winner){
-    window.alert(`${winner} won! \rThe match will restart now`);
-    location.reload();
+    const choices = document.querySelector(".user-selection");
+    const matchup = document.querySelector(".matchup");
+    const result = document.querySelector(".result");
+    const resultMessage = document.querySelector(".result-message");
+
+    // remove play space
+    choices.style.display = "none";
+    matchup.style.display = "none";
+
+    // show end message
+    result.style.display = "block";
+    resultMessage.textContent = `${winner} won!`;
+
 }
