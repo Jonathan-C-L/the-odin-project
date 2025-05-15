@@ -15,10 +15,7 @@ window.onload = () => {
     // preloading images
     imgInit();
 
-    // get user choice
-    const computerChoice = getComputerChoice();
-    console.log(`Computer choice was ${RPS[computerChoice]}`);
-    getUserChoice(computerChoice);
+    getUserChoice();
 
 }
 /******************functions***************/
@@ -57,15 +54,20 @@ function Randomize(min, max){
     return Math.floor(Math.random()*(max-min))+min;
 }
 
-function getUserChoice(computerChoice){
+function getUserChoice(){
     const user = document.querySelector(".user-selection");
     const choice = document.querySelectorAll("button");
 
-    // choice made
+    // check for choice made by user
     for(let i = 0; i < choice.length; i++){
         choice[i].onclick = () =>{
             console.log(`User choice was ${RPS[i]}`);
-            // only displays the matchup if user has made a choice
+
+            // generate computer choice after user choice has been made
+            const computerChoice = getComputerChoice();
+            console.log(`Computer choice was ${RPS[computerChoice]}`);
+
+            // determine winner and display result
             playRound(computerChoice, i);
         }
     }
@@ -81,4 +83,7 @@ function playRound(computer, user){
     choice.alt = `${RPS[user]}`;
     comp.src = `./images/${RPS[computer]}.png`;
     comp.alt = `${RPS[computer]}`
+
+    // user vs computer comparison
+    
 }
