@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./js.js"></script>
+    <title>Rock|Paper|Scissors</title>
+</head>
+<body>
+    <header>
+        <h1>Rock | Paper | Scissors</h1>
+    </header>
+    <main>
+        <!-- user selection -->
+        <div class="user-selection">
+            <h2>Make your choice!</h2>
+            <div>
+                <button type="button"><img src="./images/rock.png" alt="rock"></button>
+                <button type="button"><img src="./images/paper.png" alt="paper"></button>
+                <button type="button"><img src="./images/scissors.png" alt="scissors"></button>
+            </div>
+            
+        </div>
+        <!-- images for rock, paper, scissors -->
+        <div class="matchup">
+            <h2 class="score">0 - 0</h2>
+            <div class="images">
+                    <h3>You:<img class="user-img" src="./images/rock.png" alt="rock"></h3>
+                    <h3>Computer:<img class="bot-img" src="./images/rock.png" alt="rock"></h3>
+                    
+            </div> 
+        </div>
+        <!-- hidden display (shows result) -->
+         <div class="result">
+            <div class="result-message"></div>
+            <button class="reset" type="button">Press To Restart</button>
+         </div>
+    </main>
+    <footer>
+        <h4>&copy; Jonathan Le 2025</h4>
+    </footer>
+</body>
+</html>
