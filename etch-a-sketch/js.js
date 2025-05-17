@@ -16,5 +16,17 @@ window.onload = () =>{
         }
         main.appendChild(newCol);
     }
-    
+
+    // hover event
+    const squares = document.querySelectorAll(".grid");
+    squares.forEach((square)=>{
+        square.addEventListener("mouseover", drawing);
+    });
 };
+
+
+
+function drawing(){
+    this.classList.add("drawn");
+    console.log("square changed to drawn");
+}

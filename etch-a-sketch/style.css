@@ -4,15 +4,19 @@
     /* flex-wrap: wrap; */
     justify-content: center;
 }
-div{
-    box-sizing: border-box;
-    /* etch-a-sketch sizing */
-    min-width: 20px;
-    min-height: 20px;
-    border: 1px dotted black;
+body{
+    text-align: center;
 }
 
 /* grid styling */
-.grid:hover{
+
+div{
+    box-sizing: border-box;
+    /* etch-a-sketch sizing */
+    min-width: 60px;
+    min-height: 60px;
+    border: 1px dotted black;
+}
+.drawn{
     background-color: black;
 }
