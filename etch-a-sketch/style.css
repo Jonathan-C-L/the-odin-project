@@ -1,0 +1,11 @@
+/* general styling */
+.container{
+    display: flex;
+    flex-wrap: wrap;
+}
+div{
+    box-sizing: border-box;
+    min-width: 80px;
+    min-height: 80px;
+    border: 1px dotted black;
+}
