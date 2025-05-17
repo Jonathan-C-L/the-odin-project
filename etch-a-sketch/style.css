@@ -9,14 +9,20 @@ body{
 }
 
 /* grid styling */
-
 div{
     box-sizing: border-box;
-    /* etch-a-sketch sizing */
-    min-width: 60px;
-    min-height: 60px;
+
     border: 1px dotted black;
+    /* etch-a-sketch sizing */
+    min-width: 30px;
+    min-height: 30px;
 }
 .drawn{
     background-color: black;
+}
+
+/* reset button */
+.reset{
+    padding: 1em 8em;
+    margin: 3em;
 }
