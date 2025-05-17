@@ -11,8 +11,7 @@ window.onload = () =>{
         for(row = 0; row < rows; row++){
             const newRow = document.createElement("div");
 
-            newRow.classList.add(`${col}${row}`);
-            newRow.textContent = "Hello";
+            newRow.classList.add("grid", `${col}${row}`);
             newCol.appendChild(newRow);
         }
         main.appendChild(newCol);
