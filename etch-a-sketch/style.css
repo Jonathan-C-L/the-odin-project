@@ -14,7 +14,6 @@ body{
 div{
     box-sizing: border-box;
     border: 1px dotted black;
-    /* etch-a-sketch sizing */
     width: 100%;
 }
 
