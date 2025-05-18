@@ -1,8 +1,10 @@
 /* general styling */
 .container{
+    width: 500px;
+    height: 500px;
+    justify-self: center;
+    border: 3px solid;
     display: flex;
-    /* flex-wrap: wrap; */
-    justify-content: center;
 }
 body{
     text-align: center;
@@ -11,12 +13,11 @@ body{
 /* grid styling */
 div{
     box-sizing: border-box;
-
     border: 1px dotted black;
     /* etch-a-sketch sizing */
-    min-width: 30px;
-    min-height: 30px;
+    width: 100%;
 }
+
 .drawn{
     background-color: black;
 }

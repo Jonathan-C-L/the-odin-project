@@ -1,13 +1,13 @@
-let columns = rows = 16;
+const defaultSize = 16;
 
 // onload
 window.onload = () =>{
+    const squares = document.querySelectorAll(".grid");
 
     // creating the 16x16 grid of squares (only on initial load)
-    generateGrid(rows, columns);
+    generateGrid(defaultSize, defaultSize);
 
     // drawing on the canvas
-    const squares = document.querySelectorAll(".grid");
     squares.forEach((square)=>{
         square.addEventListener("mouseover", drawing);
     });
@@ -18,47 +18,37 @@ window.onload = () =>{
 };
 
 function reset(){
+    const gridContainer = document.querySelector(".container");
+
     // remove old grid
-    const container = document.querySelectorAll(".container");
+    gridContainer.innerHTML = "";
 
-    for (col = 0; col < columns; col++){
-        const prevCol = document.createElement("div");
-
-        for(row = 0; row < rows; row++){
-            const prevRow = document.createElement("div");
-
-            prevRow.classList.add("grid", `${col}${row}`);
-            prevCol.appendChild(prevRow);
-        }
+    let newSize = window.prompt("Specify the size of the new canvas: ", 16);
+    if(newSize > 100){
+        window.alert("The size cannot exceed 100!");
+        reset();
     }
 
-
-    let columns = rows = window.prompt("Specify the size of the new canvas: ", 16);
-
-
     // regenerate grid with specified size
-    generateGrid(rows, columns);
-    
+    generateGrid(newSize, newSize);
 }
 
 function generateGrid(rows, columns){
-    const main = document.querySelector(".container");
+    const gridContainer = document.querySelector(".container");
 
     for (col = 0; col < columns; col++){
         const newCol = document.createElement("div");
+        newCol.classList.add("col");
 
         for(row = 0; row < rows; row++){
             const newRow = document.createElement("div");
 
-            newRow.classList.add("grid", `${col}${row}`);
+            newRow.classList.add("grid");
+            newRow.style.height = `${500/rows}px`;
             newCol.appendChild(newRow);
         }
-        main.appendChild(newCol);
+        gridContainer.appendChild(newCol);
     }
-}
-
-function deleteGrid(){
-
 }
 
 function drawing(){
