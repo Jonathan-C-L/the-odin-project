@@ -11,27 +11,49 @@
     <header>
         <h1>Calculator</h1>
     </header>
-    <input type="text" name="input" id="input">
+    <div class="segs">
+        <input type="text" class="input" id="digitOne">
+        <input type="text" class="input" id="digitTwo">
+        <input type="text" class="input" id="digitThree">
+        <input type="text" class="input" id="digitFour">
+        <input type="text" class="input" id="digitFive">
+        <input type="text" class="input" id="digitSix">
+        <input type="text" class="input" id="digitSeven">
+        <input type="text" class="input" id="digitEight">
+    </div>
+
     <div class="numpad">
         <div class="numbers">
-            <button type="button" class="1">1</button>
-            <button type="button" class="2">2</button>
-            <button type="button" class="3">3</button>
-            <button type="button" class="4">4</button>
-            <button type="button" class="5">5</button>
-            <button type="button" class="6">6</button>
-            <button type="button" class="7">7</button>
-            <button type="button" class="8">8</button>
-            <button type="button" class="9">9</button>
-            <button type="button" class="0">0</button>
+            <div class="firstRow">
+                <button type="button" class="7">7</button>
+                <button type="button" class="8">8</button>
+                <button type="button" class="9">9</button>
+            </div>
+            <div class="secondRow">
+                <button type="button" class="4">4</button>
+                <button type="button" class="5">5</button>
+                <button type="button" class="6">6</button>
+            </div>
+            <div class="thirdRow">
+                <button type="button" class="1">1</button>
+                <button type="button" class="2">2</button>
+                <button type="button" class="3">3</button>
+            </div>
+            <div class="fourthRow">
+                <button type="button" class="0">0</button>
+            </div>
         </div>
         <div class="functions">
             <button type="button" class="clear">Clear</button>
             <div class="operators">
-                <button type="button" class="addition">&#43;</button>
-                <button type="button" class="subtraction">&#45;</button>
-                <button type="button" class="multiplication">&#215;</button>
-                <button type="button" class="division">&#247;</button>
+                <div>
+                    <button type="button" class="addition">&#43;</button>
+                    <button type="button" class="subtraction">&#45;</button>
+                </div>
+                <div>
+                    <button type="button" class="multiplication">&#215;</button>
+                    <button type="button" class="division">&#247;</button>
+                </div>
             </div>
             <button type="button" class="equals">&#61;</button>
         </div>
