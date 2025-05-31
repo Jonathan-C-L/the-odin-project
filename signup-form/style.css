@@ -1,0 +1,67 @@
+/* general styling */
+@font-face {
+    font-family: norse;
+    src: url(./fonts/Norse-Bold.otf);
+}
+:root{
+    font-family: norse, Arial, Helvetica, sans-serif;
+    text-align: center;
+    --page-height: 100vw;
+    --header-height: 8vw;
+    --footer-height: 5vw;
+}
+body{
+    display: grid;
+    grid-template-areas: 
+        "header header" 
+        "aside main" 
+        "footer footer";
+}
+header{
+    grid-area: header;
+    height: var(--header-height);
+}
+footer{
+    grid-area: footer;
+    height: var(--footer-height);
+}
+aside{
+    grid-area: aside;
+    max-width: 1fr;
+
+}
+main{
+    grid-area: main;
+    height: calc(var(--page-height) - var(--header-height) - var(--footer-height));
+}
+/* sign up form */
+div>*{
+    display: flex; 
+    flex-direction: column;
+}
+
+.form{
+    display: grid;
+    grid-template-areas: 
+    "first last"
+    "email phone"
+    "password confirm";
+}
+.first-name-container{
+    grid-area: first;
+}
+.last-name-container{
+    grid-area: last;
+}
+.email-container{
+    grid-area: email;
+}
+.phone-container{
+    grid-area: phone;
+}
+.password-container{
+    grid-area: password;
+}
+.confirm-password-container{
+    grid-area: confirm;
+}
