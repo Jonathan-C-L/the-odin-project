@@ -7,39 +7,34 @@
     font-family: norse, Arial, Helvetica, sans-serif;
     text-align: center;
     --page-height: 100vw;
-    --header-height: 8vw;
-    --footer-height: 5vw;
 }
 body{
     display: grid;
-    grid-template-areas: 
-        "header header" 
-        "aside main" 
-        "footer footer";
-}
-header{
-    grid-area: header;
-    height: var(--header-height);
-}
-footer{
-    grid-area: footer;
-    height: var(--footer-height);
+    grid-template-areas: "aside main";
 }
 aside{
     grid-area: aside;
-    max-width: 1fr;
 
 }
 main{
     grid-area: main;
-    height: calc(var(--page-height) - var(--header-height) - var(--footer-height));
+    height: var(--page-height);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/* sidebar style */
+#background{
+    width: 100%;
+}
+#icon{
+    background-color:hsla(5, 5%, 5%, .2);
 }
 /* sign up form */
 div>*{
     display: flex; 
     flex-direction: column;
 }
-
 .form{
     display: grid;
     grid-template-areas: 
