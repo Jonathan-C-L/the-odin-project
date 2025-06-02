@@ -6,6 +6,8 @@
 :root{
     font-family: norse, Arial, Helvetica, sans-serif;
     --page-height: 100vw;
+    padding: 0;
+    margin: 0;
 }
 body{
     display: grid;
@@ -22,42 +24,59 @@ main{
     margin: 20px;
     font-size: 2rem;
 }
+
 /* sidebar style */
 aside{
     grid-area: aside;
     display: grid;
-    grid-template-areas: repeat(3, calc(1/3*100vh));
+    background-image: url(./images/background.jpg);
+    background-position-x: center;
+    background-size: cover;
 }
-#background{
+/* #background{
     width: 100%;
     grid-row: 1/3;
     object-fit: cover;
     overflow: hidden;
-}
+} */
 #icon{
-    background-color:hsla(0, 0%, 0%, .58);
+    background-color:hsla(0, 0%, 0%, .4);
     display: flex;
     color: white;
     align-items: center;
     justify-content: center;
     font-size: 6rem;
-    height: 50%;
+    height: 30%;
+    grid-row: 2;
 }
 #odin{
     height: 50%;
 }
 /* sign up form */
-div>*{
+div>[class*="container"]{
     display: flex; 
     flex-direction: column;
+    justify-content: center;
 }
 .form{
     display: grid;
     grid-template-areas: 
+    "heading heading"
+    "title title"
     "first last"
     "email phone"
-    "password confirm";
+    "password confirm"
+    "login .";
     justify-content: start;
+    background-color: wheat;
+    height: 60vh;
+    padding: 1rem;
+}
+.heading-container{
+    grid-area: heading;
+}
+.title{
+    grid-area: title;
 }
 .first-name-container{
     grid-area: first;
@@ -70,4 +89,16 @@ div>*{
 }
 .confirm-password-container{
     grid-area: confirm;
+}
+.account-container{
+    grid-area: login;
+}
+.account{
+    display: unset;
+}
+input{
+    padding: 1rem;
+    margin-right: 4rem;
+    border-radius: 7px;
+    font-size: large;
 }
