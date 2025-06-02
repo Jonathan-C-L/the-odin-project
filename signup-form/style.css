@@ -18,6 +18,9 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 5rem;
+    margin: 20px;
+    font-size: 2rem;
 }
 /* sidebar style */
 aside{
@@ -32,14 +35,17 @@ aside{
     overflow: hidden;
 }
 #icon{
-    background-color:hsla(0, 0%, 0%, .64);
+    background-color:hsla(0, 0%, 0%, .58);
     display: flex;
     color: white;
     align-items: center;
     justify-content: center;
     font-size: 6rem;
+    height: 50%;
 }
-
+#odin{
+    height: 50%;
+}
 /* sign up form */
 div>*{
     display: flex; 
