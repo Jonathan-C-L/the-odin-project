@@ -6,6 +6,11 @@
 :root{
     font-family: norse, Arial, Helvetica, sans-serif;
     --page-height: 100vw;
+    --green: #596D48;
+    --border: #E5E7EB;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 body{
     display: grid;
@@ -18,40 +23,74 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 5rem;
+    margin: 20px;
+    font-size: 2rem;
+}
+h1,h2,h3,h4,h5,h6{
+    padding: 0;
+    margin: 0;
+}
+a:link{
+    color: var(--green);
+}
+a:active{
+    color: red;
+}
+a:hover{
+    color: var(--green);
+}
+a:visited{
+    color: var(--green);
 }
 /* sidebar style */
 aside{
     grid-area: aside;
     display: grid;
-    grid-template-areas: repeat(3, calc(1/3*100vh));
-}
-#background{
-    width: 100%;
-    grid-row: 1/3;
-    object-fit: cover;
-    overflow: hidden;
+    background-image: url(./images/background.jpg);
+    background-position-x: center;
+    background-size: cover;
 }
 #icon{
-    background-color:hsla(0, 0%, 0%, .64);
+    background-color:hsla(0, 0%, 0%, .4);
     display: flex;
     color: white;
     align-items: center;
     justify-content: center;
     font-size: 6rem;
+    height: 30%;
+    grid-row: 2;
 }
-
+#odin{
+    height: 50%;
+}
 /* sign up form */
-div>*{
+div>[class*="container"]{
     display: flex; 
     flex-direction: column;
+    justify-content: center;
 }
 .form{
     display: grid;
     grid-template-areas: 
+    "heading heading"
+    "title title"
     "first last"
     "email phone"
-    "password confirm";
+    "password confirm"
+    "login .";
     justify-content: start;
+    height: 60vh;
+    padding: 1rem;
+    grid-gap: 24px;
+}
+.heading-container{
+    grid-area: heading;
+    width: 80%;
+}
+.title{
+    grid-area: title;
+    margin: 0;
 }
 .first-name-container{
     grid-area: first;
@@ -64,4 +103,41 @@ div>*{
 }
 .confirm-password-container{
     grid-area: confirm;
+}
+.account-container{
+    grid-area: login;
+}
+.account{
+    display: unset;
+}
+button{
+    font-size: 1.5rem;
+    font-family: norse, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    border: none;
+    color: white;
+    background-color: var(--green);
+    padding: 1rem 3rem;
+    width: 45%;
+    border-radius: 7px;
+    margin-bottom: 24px;
+}
+/* input styling */
+input{
+    padding: .7rem;
+    margin-right: 4rem;
+    border-radius: 7px;
+    font-size: large;
+    width: 70%;
+    border: 1px solid var(--border);
+}
+/* input:hover{
+    border-color:darkgray;
+} */
+input:focus{
+    outline: none;
+    border-color: blue;
+}
+input:invalid{
+    border-color: red;    
 }
