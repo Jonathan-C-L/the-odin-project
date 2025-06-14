@@ -3,4 +3,45 @@
     padding: 0;
     margin: 0;
 }
+/* body */
+body{
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 0.8fr 4fr;
+    grid-template-rows: 0.6fr 4fr;
+    grid-template-areas: 
+    "sidebar header"
+    "sidebar main";
+}
 
+/* sidebar */
+.sidebar{
+    grid-area: sidebar;
+}
+
+/* header */
+.header{
+    grid-area: header;
+}
+
+/* main */
+.main{
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "projects announcement"
+    "projects trending";
+}
+.projects-container{
+    grid-area: projects;
+}
+.announcements-container{
+    grid-area: announcement;
+}
+.trending-container{
+    grid-area: trending;
+}
+
+/* aside */
