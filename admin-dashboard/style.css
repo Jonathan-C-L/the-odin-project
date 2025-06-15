@@ -69,19 +69,40 @@ body{
     display: flex;
     justify-content: space-between;
 }
-label>img{
+label>img, .account-container>img{
     width: var(--icon-size);
 }
 .search-container, .account-container, .intro-container, .button-container{
     display: flex;
     align-items: center;
     gap: calc(var(--spacing) - 1rem);
-    margin: var(--spacing);
+    margin: 1rem calc(var(--spacing)*2) ;
 }
 #search{
     border-radius: 20px;
     width: 40vw;
     height: 2rem;
+}
+.button-container>button{
+    padding: 1rem 3rem;
+    border-radius: 28px;
+    background-color: navy;
+    color: white;
+    border: none;
+}
+.profile-pic{
+    display: flex;
+    justify-content: center;
+    border: 1px solid lightslategray;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50px;
+    background-image: url(./images/profile.jpg);
+    background-size: cover;
+}
+#intro-pic{
+    width: 6rem;
+    height: 6rem;
 }
 
 /* main */
