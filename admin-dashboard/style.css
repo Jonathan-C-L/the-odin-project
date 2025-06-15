@@ -2,6 +2,12 @@
 *{
     padding: 0;
     margin: 0;
+    --spacing: 2rem;
+    --icon-size: 2rem;
+    box-sizing: border-box;
+}
+h1, h2{
+    display: inline;
 }
 /* body */
 body{
@@ -12,16 +18,70 @@ body{
     grid-template-areas: 
     "sidebar header"
     "sidebar main";
+    background-color: lightgray;
 }
 
 /* sidebar */
 .sidebar{
     grid-area: sidebar;
+    background-color: navy;
+    color: white;
+    padding: var(--spacing);
 }
-
+.sidebar>div{
+    padding-bottom: 3rem;
+}
+.logo-container{
+    display: flex;
+    align-items: center;
+    margin-left: -1rem;
+}
+.logo-container img{
+    filter: invert(1);
+    width: 4rem;
+    margin-right: 1rem;
+}
+.user-options img, .user-support img{
+    filter: invert(1);
+    width: var(--icon-size);
+    margin-right: 2rem;
+}
+.user-options div, .user-support div{
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
 /* header */
 .header{
     grid-area: header;
+    background-color: white;
+    box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.44);
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+}
+.top-container{
+    grid-row: 1;
+}
+.bottom-container{
+    grid-row: 2;
+}
+.top-container, .bottom-container{
+    display: flex;
+    justify-content: space-between;
+}
+label>img{
+    width: var(--icon-size);
+}
+.search-container, .account-container, .intro-container, .button-container{
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing) - 1rem);
+    margin: var(--spacing);
+}
+#search{
+    border-radius: 20px;
+    width: 40vw;
+    height: 2rem;
 }
 
 /* main */
@@ -36,6 +96,26 @@ body{
 }
 .projects-container{
     grid-area: projects;
+    display: flex;
+    flex-direction: column;
+    margin: var(--spacing);
+}
+.cards-container{
+    display: flex;
+    gap: var(--spacing);
+    flex-wrap: wrap;
+}
+.card{
+    width: calc((100% - var(--spacing))/2);
+    height: 18rem;
+    background-color: white;
+    border-left: 1rem solid sandybrown;
+}
+
+/* aside */
+.announcements-container,.trending-container{
+    margin: var(--spacing);
+    margin-left: 0;
 }
 .announcements-container{
     grid-area: announcement;
@@ -43,5 +123,8 @@ body{
 .trending-container{
     grid-area: trending;
 }
-
-/* aside */
+.display-container, .card{
+    background-color: white;
+    box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.44);
+    border-radius: 7px;
+}
