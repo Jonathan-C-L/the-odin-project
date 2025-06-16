@@ -8,6 +8,7 @@
 }
 h1, h2{
     display: inline;
+    margin-bottom: 1rem;
 }
 /* body */
 body{
@@ -96,13 +97,17 @@ label>img, .account-container>img{
     border: 1px solid lightslategray;
     width: 4rem;
     height: 4rem;
-    border-radius: 50px;
+    border-radius: 100px;
     background-image: url(./images/profile.jpg);
     background-size: cover;
 }
 #intro-pic{
     width: 6rem;
     height: 6rem;
+}
+.intro{
+    font-size: xx-large;
+    font-weight: bold;
 }
 
 /* main */
@@ -131,6 +136,28 @@ label>img, .account-container>img{
     height: 18rem;
     background-color: white;
     border-left: 1rem solid sandybrown;
+    padding: var(--spacing);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.text{
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+.text>p{
+    font-size: x-large;
+    color: darkslategray;
+}
+.icons{
+    width: 8rem;
+    display: flex;
+    justify-content: space-between;
+    align-self: self-end;
+}
+.icons>img{
+    width: var(--icon-size);
 }
 
 /* aside */
@@ -148,4 +175,9 @@ label>img, .account-container>img{
     background-color: white;
     box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.44);
     border-radius: 7px;
+}
+.aside{
+    padding: var(--spacing);
+}
+.announcement{
 }
