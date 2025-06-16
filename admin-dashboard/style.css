@@ -165,6 +165,9 @@ label>img, .account-container>img{
     margin: var(--spacing);
     margin-left: 0;
 }
+.announcements-container>h2, .trending-container>h2{
+    margin-bottom: 1rem;
+}
 .announcements-container{
     grid-area: announcement;
 }
@@ -176,8 +179,20 @@ label>img, .account-container>img{
     box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.44);
     border-radius: 7px;
 }
+.display-container{
+    height: calc(100% - var(--spacing));
+    display: grid;
+    overflow: hidden;
+}
 .aside{
     padding: var(--spacing);
 }
-.announcement{
+.trending{
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    gap: 20px;
+}
+.trending-container>.display-container{
+    width: 63%;
 }
