@@ -1,0 +1,9 @@
+.container, .form{
+    display: flex;
+}
+.form{
+    flex-direction: column;
+}
+.cards{
+    justify-content: space-between;
+}
