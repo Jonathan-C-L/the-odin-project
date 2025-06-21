@@ -1,0 +1,14 @@
+.gameboard{
+    display: grid;
+    grid: repeat(3, 12rem)/repeat(3, 12rem);
+}
+.gameboard>div{
+    border: 1px solid black;
+    
+}
+.gameboard>div:hover{
+    background-color: lightgoldenrodyellow;
+}
+.gameboard>div:active{
+    background-color: wheat;
+}
