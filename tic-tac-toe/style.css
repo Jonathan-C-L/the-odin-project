@@ -1,3 +1,9 @@
+body{
+    margin: 0;
+    padding: 0;
+    justify-items: center;
+    box-sizing: content-box;
+}
 .gameboard{
     display: grid;
     grid: repeat(3, 12rem)/repeat(3, 12rem);
@@ -11,4 +17,24 @@
 }
 .gameboard>div:active{
     background-color: wheat;
+}
+.o{
+    background-image: url(./images/o.png);
+    background-size: 10rem;
+}
+.x{
+    background-image: url(./images/x.png);
+    background-size: contain;
+}
+.x, .o{
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.player-display{
+    display: flex;
+    width: 50vw;
+    justify-content: space-evenly;
+}
+.hidden{
+    display: none;
 }
