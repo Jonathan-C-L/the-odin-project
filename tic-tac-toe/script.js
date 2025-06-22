@@ -1,6 +1,6 @@
-    const gameboard = createGameboard();
-    const player1 = createPlayer('', 'x');
-    const player2 = createPlayer('', 'o');
+const gameboard = createGameboard();
+const player1 = createPlayer('', 'x');
+const player2 = createPlayer('', 'o');
 
 window.addEventListener("load", () =>{
     const button = document.querySelector(".submit");
@@ -25,7 +25,6 @@ window.addEventListener("load", () =>{
             playerInput.classList.toggle("hidden");
             button.classList.toggle("hidden");
             playerDisplay.classList.toggle("hidden");
-            player1.startTurn();
         }
         else{
             window.alert("Please input names for each player!")
@@ -34,20 +33,11 @@ window.addEventListener("load", () =>{
 
     for(let i = 0; i < board.length; i++){
         board[i].addEventListener("click", function(){
-            if(player1.turn){
-                gameboard.pickPosition(i, player1);
-                player1.endTurn();
-                player2.startTurn();
-            }
-            else{
-                gameboard.pickPosition(i, player2);
-                player2.endTurn();
-                player1.startTurn();
-            }
+            (gameboard.getTurn()%2 == 0 )?gameboard.pickPosition(i, player1):gameboard.pickPosition(i, player2);
+            gameboard.changeTurn();
             DisplayBoard();
         });
     }
-
 
 });
 
@@ -56,20 +46,25 @@ function createGameboard(){
     // 2D array for the gameboard
     let board = ['_', '_', '_', '_', '_', '_', '_', '_', '_'];
 
+    let playerTurn = 0;
+
+    const changeTurn = () => playerTurn++;
+    const getTurn = () => playerTurn;
+
     const pickPosition = (position, player) => {
         (board[position] === '_')?board[position] = player.mark:console.log("Position is already taken!");
     };  
 
-    return {board, pickPosition};
+    return {board, getTurn, changeTurn, pickPosition};
 }
 
 function createPlayer(name, mark){
-    let turn = false;
+    let score = 0;
 
-    const endTurn = () => turn = false;
-    const startTurn = () => turn = true;
+    const getScore = () => score;
+    const giveScore = () => score++;
 
-    return {name, mark, turn, endTurn, startTurn};
+    return {name, mark, getScore, giveScore};
 }
 
 // functions
