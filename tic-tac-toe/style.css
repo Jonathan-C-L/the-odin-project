@@ -32,8 +32,11 @@ body{
 }
 .player-display{
     display: flex;
-    width: 50vw;
+    width: 800px;
     justify-content: space-evenly;
+}
+.results-display{
+    justify-items: center;
 }
 .hidden{
     display: none;
