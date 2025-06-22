@@ -25,37 +25,51 @@ window.addEventListener("load", () =>{
             playerInput.classList.toggle("hidden");
             button.classList.toggle("hidden");
             playerDisplay.classList.toggle("hidden");
+            gameboard.playGame();
         }
         else{
             window.alert("Please input names for each player!")
         }
     });
 
+    // tic tac toe board 
     for(let i = 0; i < board.length; i++){
         board[i].addEventListener("click", function(){
-            (gameboard.getTurn()%2 == 0 )?gameboard.pickPosition(i, player1):gameboard.pickPosition(i, player2);
-            gameboard.changeTurn();
-            DisplayBoard();
+            if(gameboard.checkGame()){
+                if(gameboard.getTurn()%2 == 0){
+                    gameboard.pickPosition(i, player1);
+                    CheckBoard(player1);
+                }
+                else{
+                    gameboard.pickPosition(i, player2);
+                    CheckBoard(player2);
+                }
+                gameboard.changeTurn();
+                DisplayBoard();
+            }
+            else{
+                window.alert("Please input names for each player!");
+            }
         });
     }
-
 });
 
 // factory functions
 function createGameboard(){
     // 2D array for the gameboard
     let board = ['_', '_', '_', '_', '_', '_', '_', '_', '_'];
-
     let playerTurn = 0;
+    let play = false;
 
+    const playGame = () => play = true;
+    const checkGame = () => play;
     const changeTurn = () => playerTurn++;
     const getTurn = () => playerTurn;
-
     const pickPosition = (position, player) => {
         (board[position] === '_')?board[position] = player.mark:console.log("Position is already taken!");
     };  
 
-    return {board, getTurn, changeTurn, pickPosition};
+    return {board, getTurn, changeTurn, pickPosition, playGame, checkGame};
 }
 
 function createPlayer(name, mark){
@@ -75,23 +89,16 @@ function DisplayBoard(){
     }
 }
 
-function CheckBoard(board, player){
+function CheckBoard(player){
     // winner check
-    if( board[0][0] == player.mark && board[1][0] == player.mark && board[2][0] == player.mark ||
-        board[0][1] == player.mark && board[1][1] == player.mark && board[2][1] == player.mark ||
-        board[0][2] == player.mark && board[1][2] == player.mark && board[2][2] == player.mark ||
-        board[0][0] == player.mark && board[1][1] == player.mark && board[2][2] == player.mark ||
-        board[2][0] == player.mark && board[1][1] == player.mark && board[0][2] == player.mark
-    ){
+    if(/******start here******/){
         console.log(`${player.name} is the winner!`);
     }
     // tie check
     let positionsLeft = 0;
-    for(let i = 0; i < board.length; i++){
-        for(let j = 0; j < board[i].length; j++){
-            if(board[i][j] === '_'){
-                positionsLeft++;
-            }
+    for(let i = 0; i < gameboard.board.length; i++){
+        if(gameboard.board[i] === '_'){
+            positionsLeft++;
         }
     }
     if(positionsLeft <= 0){
