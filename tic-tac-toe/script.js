@@ -29,7 +29,6 @@ window.addEventListener("load", () =>{
         }
     });
     reset.addEventListener("click", function(){
-        // gameboard.board = ['_', '_', '_', '_', '_', '_', '_', '_', '_'];
         gameboard = createGameboard();
         gameboard.playGame();
         ResetBoard();
