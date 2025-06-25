@@ -1,7 +1,31 @@
 /**************global items*****************/
 console.log("Hello world!");
 preloadImages = [];
-let userScore = 0, computerScore = 0;
+const buttons = document.querySelector(".buttons-container");
+const choices = document.querySelector(".user-selection");
+const score = document.querySelector(".score");
+const choiceImg = document.querySelector(".user-img");
+const comp = document.querySelector(".bot-img"); 
+const matchup = document.querySelector(".matchup");
+const result = document.querySelector(".result");
+const resultMessage = document.querySelector(".result-message");
+
+/******************Classes******************/
+class Player {
+    score = 0;
+    move;
+
+    constructor(name){
+        this.name = name;
+    }
+    addScore(){
+        return this.score++;
+    }
+    // min(inclusive); max(exclusive)
+    pickMove(min = 0, max = 3){
+        return Math.floor(Math.random()*(max-min))+min;
+    }
+}
 
 /*********Rock, Paper, Scissors Enum********/
 const RPS = {
@@ -15,13 +39,14 @@ window.onload = () => {
     // preloading images
     imgInit();
 
-    getUserChoice();
-
     document.querySelector(".reset").onclick = () =>{
         location.reload();
     }
-
 }
+/***************player objects**************/
+const computer = new Player("Computer");
+const user = new Player("Jonathan"); 
+
 /******************functions***************/
 // preloading images
 function imgInit(){
@@ -47,77 +72,55 @@ function imgInit(){
         console.log("images successfully loaded");
     }
 }
-function getComputerChoice(){
-    // randomize function needs to include 2, so max was +1
-    return Randomize(0, 3);
-}
 
-// randomize helper function to get random numbers between 0-2
-function Randomize(min, max){
-    // generates random number between min(inclusive) and max(exclusive)
-    return Math.floor(Math.random()*(max-min))+min;
-}
+addGlobalEventListener("click", ".choice", buttons, e => {
+    let choice = e.target.classList.value[0];
 
-function getUserChoice(){
-    const user = document.querySelector(".user-selection");
-    const choice = document.querySelectorAll("button");
+    console.log(`User choice was ${RPS[choice]}`);
+    console.log(`Computer choice was ${RPS[computer.move]}`);
 
-    // check for choice made by user
-    for(let i = 0; i < choice.length; i++){
-        choice[i].onclick = () =>{
-            console.log(`User choice was ${RPS[i]}`);
+    // determine winner and display result
+    playRound(computer.pickMove(), choice);
+});
 
-            // generate computer choice after user choice has been made
-            const computerChoice = getComputerChoice();
-            console.log(`Computer choice was ${RPS[computerChoice]}`);
-
-            // determine winner and display result
-            playRound(computerChoice, i);
-        }
-    }
-}
-
-function playRound(computer, user){
-    const score = document.querySelector(".score");
-    const choice = document.querySelector(".user-img");
-    const comp = document.querySelector(".bot-img"); 
+function playRound(computerChoice, userChoice){
     let winner = "", tie = false;
 
     // displaying the images for the user and computer choices, respectively
-    choice.src = `./images/${RPS[user]}.png`;
-    choice.alt = `${RPS[user]}`;
-    comp.src = `./images/${RPS[computer]}.png`;
-    comp.alt = `${RPS[computer]}`
+    choiceImg.src = `./images/${RPS[userChoice]}.png`;
+    choiceImg.alt = `${RPS[userChoice]}`;
+    comp.src = `./images/${RPS[computerChoice]}.png`;
+    comp.alt = `${RPS[computerChoice]}`
     
     // user vs computer comparison
     // tie
-    if(RPS[user] == RPS[computer]){
+    if(RPS[userChoice] == RPS[computerChoice]){
         window.alert(`Tie! Both played ${RPS[user]}`);
         tie = true;
     }
     // user choice is rock
-    if(RPS[user] == "rock" && !tie){
-        winner = (RPS[computer] == "paper")?"computer":"user";
+    if(RPS[userChoice] == "rock" && !tie){
+        winner = (RPS[computerChoice] == "paper")?"computer":"user";
     }
     // user choice is paper
-    if(RPS[user] == "paper" && !tie){
-        winner = (RPS[computer] == "scissors")?"computer":"user";
+    if(RPS[userChoice] == "paper" && !tie){
+        winner = (RPS[computerChoice] == "scissors")?"computer":"user";
     }
     // user choice is scissors
-    if(RPS[user] == "scissors" && !tie){
-        winner = (RPS[computer] == "rock")?"computer":"user";
+    if(RPS[userChoice] == "scissors" && !tie){
+        winner = (RPS[computerChoice] == "rock")?"computer":"user";
     }
     // only change score if winner has been determined
     if(winner != ""){
         if(winner == "computer"){
-            window.alert(`You lose! Computer won playing ${RPS[computer]}`);
-            computerScore++;
-            score.textContent = `${userScore} - ${computerScore}`;
+            window.alert(`You lose! Computer won playing ${RPS[computerChoice]}`);
+            computer.addScore();
+            score.textContent = `${user.score} - ${computer.score}`;
         }
         else{
-            window.alert(`You won playing ${RPS[user]}!`);
-            userScore++;
-            score.textContent = `${userScore} - ${computerScore}`;
+            window.alert(`You won playing ${RPS[userChoice]}!`);
+            user.addScore();
+            score.textContent = `${user.score} - ${computer.score}`;
         }
         // reset the result so score doesn't get re-added
         winner = "";
@@ -125,17 +128,13 @@ function playRound(computer, user){
     }
 
     // display winner when one reaches 5 wins total
-    if(userScore >= 5 || computerScore >= 5){
-        (userScore >= 5)? endMatch("You"):endMatch("Computer");
+    if(user.score >= 5 || computer.score >= 5){
+        (user.score >= 5)? endMatch("You"):endMatch("Computer");
     }
 }
 
 // helper function to declare winner
 function endMatch(winner){
-    const choices = document.querySelector(".user-selection");
-    const matchup = document.querySelector(".matchup");
-    const result = document.querySelector(".result");
-    const resultMessage = document.querySelector(".result-message");
 
     // remove play space
     choices.style.display = "none";
@@ -144,5 +143,13 @@ function endMatch(winner){
     // show end message
     result.style.display = "block";
     resultMessage.textContent = `${winner} won!`;
+}
 
+// event delegation function
+function addGlobalEventListener(type, selector, parent = document, callback){
+    parent.addEventListener(type, e =>{
+        if(e.target.matches(selector)){
+            callback(e);
+        }
+    });
 }
