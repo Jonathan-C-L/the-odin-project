@@ -21,14 +21,17 @@ module.exports = {
   ],
   module: {
     rules: [
+      // css loader
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       },
+      // html loader
       {
         test: /\.html$/i,
         loader: "html-loader",
       },
+      // image loader
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset/resource",
