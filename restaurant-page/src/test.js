@@ -1,1 +1,0 @@
-export const test = "Welcome to the restaurant page!";

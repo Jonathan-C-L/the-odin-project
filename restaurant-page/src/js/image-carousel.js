@@ -1,9 +1,9 @@
 // exports
 export {ImageCarousel};
-import food1 from "./images/food1.jpg";
-import food2 from "./images/food2.jpg";
-import food3 from "./images/food3.jpg";
-import food4 from "./images/food4.jpg";
+import food1 from "../images/food1.jpg";
+import food2 from "../images/food2.jpg";
+import food3 from "../images/food3.jpg";
+import food4 from "../images/food4.jpg";
 
 // variables
 let images = [];
@@ -33,7 +33,7 @@ function NextImage(){
     imageIndex++;
     imageIndex = (imageIndex%images.length);
     // this is where the image with be displayed
-    imageDisplay.setAttribute("style", `background: top/contain no-repeat url(${images[imageIndex]})`);
+    imageDisplay.setAttribute("style", `background: center / cover no-repeat url(${images[imageIndex]})`);
     // must be added to the content div 
     content.appendChild(imageDisplay);
 }
