@@ -7,24 +7,41 @@ import food4 from "./images/food4.jpg";
 
 // variables
 let images = [];
-const img = document.createElement("img");
-    const body = document.querySelector("#content");
+const content = document.querySelector("#content");
+const imageDisplay = document.createElement("div");
+imageDisplay.classList.add("image-display");
+let timerID = 0;
+let imageIndex = 0;
 
-
-// factory functions
-function NewImage(src){
-    let image = new Image();
-    image.src = src;
-    return {image};
-}
-
-
+// function
 function ImageCarousel(){
-    body.textContent = "HELLO THERE";
     console.log("content js is working");
-    
-    
-    let newImage = new Image();
-    newImage.src = food1;
-    images.push(newImage);
+    // adding images to array to be rotated through
+    ImageInit();   
+    // AutoPlay();
 }
+
+function ImageInit(){
+    images.push(food1, food2, food3, food4);
+    // this is where the image with be displayed
+    imageDisplay.setAttribute("style", `background: top/contain no-repeat url(${images[imageIndex]})`);
+    // must be added to the content div 
+    content.appendChild(imageDisplay);
+}
+
+function NextImage(){
+    imageIndex++;
+    imageIndex = (imageIndex%images.length);
+    // this is where the image with be displayed
+    imageDisplay.setAttribute("style", `background: top/contain no-repeat url(${images[imageIndex]})`);
+    // must be added to the content div 
+    content.appendChild(imageDisplay);
+}
+
+function AutoPlay(){
+    let interval = 4000;
+
+    timerID = setInterval(NextImage, interval);
+}
+
+
