@@ -1,11 +1,12 @@
 import "./styles.css";
-import {ImageCarousel, DisplayHome} from "./js/home.js";
+import {DisplayHome} from "./js/home.js";
 import { addGlobalEventListener } from "./js/event-listener.js";
 
 const buttons = document.querySelector(".buttons");
+const content = document.querySelector("#content");
 
-ImageCarousel();
 DisplayHome();
+
 
 addGlobalEventListener("click", "button", buttons, e =>{
     if(e.target.classList.value == "home"){

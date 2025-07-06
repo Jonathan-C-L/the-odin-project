@@ -1,35 +1,27 @@
 import { ImageCarousel } from "./image-carousel";
-export {ImageCarousel, DisplayHome};
+import { CreateCard, CreateOpenTimeCard } from "./info-card.js";
+export {DisplayHome};
 
 const content = document.querySelector("#content");
-const homeDisplay = document.createElement("div");
-homeDisplay.classList.add("display");
-const description = document.createElement("div");
-description.classList.add("info");
-
-const hours = document.createElement("div");
-hours.classList.add("info");
-const location = document.createElement("div");
-location.classList.add("info");
-
-description.textContent = "Vina's kitchen will make your tastebuds experience a whole new world! She specializes in Asian cuisine and fries :)";
-hours.textContent = "Sunday: 8:00am - 10:00pm Monday: 8:00am - 10:00pm Tuesday: 8:00am - 10:00pm";
-location.textContent = "Edmonton, AB";
 
 function DisplayHome(){
+    ImageCarousel();
+    Location();
     Description();
     Hours();
-    Location();
 }
 function Description(){
-    homeDisplay.appendChild(description);
-    content.appendChild(homeDisplay);
+    const description = CreateCard("Vina's Kitchen", "Specialities in Asian cuisine, fries, baked goods, and fruits!");
+    description.classList.add("description");
+    content.appendChild(description);
 }
 function Hours(){
-    homeDisplay.appendChild(hours);
-    content.appendChild(homeDisplay);
+    const hours = CreateOpenTimeCard("Opening Hours", "Closed", "8am - 10pm", "8am - 10pm","8am - 10pm","8am - 10pm","8am - 10pm", "8am - 10pm");
+    hours.classList.add("hours");
+    content.appendChild(hours);
 }
 function Location(){
-    homeDisplay.appendChild(location);
-    content.appendChild(homeDisplay);
+    const location = CreateCard("Location", "12345 67St NW Edmonton, AB, CA");
+    location.classList.add("location");
+    content.appendChild(location);
 }
