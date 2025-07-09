@@ -50,3 +50,17 @@ button:active{
   display: flex;
   height: var(--info);
 }
+.menu-page{
+  margin-top: calc(var(--spacing) / 2);
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.appetizers, .mains, .drinks{
+  width: 30%;
+}
+.item>h5{
+  display: flex;
+  justify-content: space-between;
+}
+

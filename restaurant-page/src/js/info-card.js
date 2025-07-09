@@ -22,12 +22,16 @@ function AddMenuItems(title, description, price){
     const displayPrice = document.createElement("span");
 
     displayTitle.textContent = title;
-    itemDescription.textContent = description;
     displayPrice.textContent = "$" + price;
+    if(description != "n/a")
+        itemDescription.textContent = description;
+    else
+        itemDescription.textContent = "";
 
+    displayTitle.appendChild(displayPrice);
     item.appendChild(displayTitle);
     item.appendChild(itemDescription);
-    item.appendChild(displayPrice);
+
     item.classList.add("item");
 
     return item;
