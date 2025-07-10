@@ -16,6 +16,7 @@ function NewItem(name, description, price){
 
 function Menu(){
     content.innerHTML = "";
+    menu.innerHTML = "";
     Appetizers();
     Mains();
     Drinks();

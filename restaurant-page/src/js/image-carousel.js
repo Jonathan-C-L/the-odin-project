@@ -20,7 +20,7 @@ function ImageCarousel(){
 
     // adding images to array to be rotated through
     ImageInit();
-    // AutoPlay();
+    AutoPlay();
 }
 
 function ImageInit(){
