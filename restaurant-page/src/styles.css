@@ -58,6 +58,7 @@ button:active{
 }
 .appetizers, .mains, .drinks{
   width: 30%;
+  padding: var(--spacing);
 }
 .item>h5{
   display: flex;
